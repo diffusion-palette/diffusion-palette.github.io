@@ -1,0 +1,832 @@
+<!--
+  Copyright 2018 The Distill Template Authors
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!doctype html>
+
+<style>
+.base-grid,
+pa.n-header,
+.n-byline,
+.n-title,
+.n-article,
+.n-footer {
+    display: grid;
+    justify-items: stretch;
+    grid-template-columns: [screen-start] 8px [page-start kicker-start text-start gutter-start middle-start] 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr [text-end page-end gutter-end kicker-end middle-end] 8px [screen-end];
+    grid-column-gap: 8px;
+}
+
+.grid {
+  display: grid;
+  grid-column-gap: 8px;
+}
+
+@media(min-width: 768px) {
+    .base-grid,
+    .n-header,
+    .n-byline,
+    .n-title,
+    .n-article,
+    .n-footer {
+        display: grid;
+        justify-items: stretch;
+        grid-template-columns: [screen-start] 1fr [page-start kicker-start middle-start text-start] 45px 45px 45px 45px 45px 45px 45px 45px [ kicker-end text-end gutter-start] 45px [middle-end] 45px [page-end gutter-end] 1fr [screen-end];
+        grid-column-gap: 16px;
+    }
+
+    .grid {
+        grid-column-gap: 16px;
+    }
+}
+
+@media(min-width: 1000px) {
+    .base-grid,
+    .n-header,
+    .n-byline,
+    .n-title,
+    .n-article,
+    .n-footer {
+        display: grid;
+        justify-items: stretch;
+        grid-template-columns: [screen-start] 1fr [page-start kicker-start] 50px [middle-start] 50px [text-start kicker-end] 50px 50px 50px 50px 50px 50px 50px 50px [text-end gutter-start] 50px [middle-end] 50px [page-end gutter-end] 1fr [screen-end];
+        grid-column-gap: 16px;
+    }
+
+    .grid {
+        grid-column-gap: 16px;
+    }
+}
+
+@media (min-width: 1180px) {
+    .base-grid,
+    .n-header,
+    .n-byline,
+    .n-title,
+    .n-article,
+    .n-footer {
+        display: grid;
+        justify-items: stretch;
+        grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+        grid-column-gap: 32px;
+    }
+    .grid {
+        grid-column-gap: 32px;
+    }
+
+}
+
+.base-grid {
+  grid-column: screen;
+}
+
+/* default grid column assignments */
+.n-title > *  {
+
+
+
+    grid-column: text;
+}
+
+.n-article > *  {
+  grid-column: text;
+}
+
+.n-title {
+    padding: 2.5rem 0 0.5rem;
+}
+
+.l-page {
+    grid-column: page;
+}
+
+.l-article {
+    grid-column: text;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+
+.pixelated {
+    image-rendering: pixelated;
+}
+
+strong {
+    font-weight: 600;
+}
+
+/*------------------------------------------------------------------*/
+/* title */
+.n-title h1 {
+    font-family: "Barlow",system-ui,Arial,sans-serif;
+    color:#082333;
+    grid-column: text;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .n-title h1 {
+        font-size: 50px;
+    }
+}
+
+
+.n-byline {
+  contain: style;
+  overflow: hidden;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 0.8rem;
+  line-height: 1.8em;
+  padding: 1.5rem 0;
+  min-height: 1.8em;
+}
+
+.n-byline .byline {
+  grid-column: text;
+}
+
+.byline {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.grid {
+    display: grid;
+    grid-column-gap: 8px;
+}
+
+@media (min-width: 768px) {
+.grid {
+    grid-column-gap: 16px;
+}
+}
+
+.n-byline p {
+  margin: 0;
+}
+
+.n-byline h3 {
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+    margin: 0;
+    text-transform: uppercase;
+}
+.n-byline .authors-affiliations {
+  grid-column-end: span 2;
+  grid-template-columns: 1fr 1fr;
+}
+
+ul.authors {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+ul.authors li {
+    padding: 0 0.5rem;
+    display: inline-block;
+}
+
+ul.authors sup {
+    color: rgb(126,126,126);
+}
+
+ul.authors.affiliations  {
+    margin-top: 0.5rem;
+}
+
+ul.authors.affiliations li {
+    color: rgb(126,126,126);
+}
+
+.preload { visibility: hidden; }
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.panorama-slideshow {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.panorama-slide {
+  display: none;
+}
+
+/* Hide the images by default */
+div[class^='image-gallery-slide-'] {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+
+/* Next & previous buttons */
+.prev-image, .next-image {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  margin-left: -50px;
+  margin-right: -30px;
+  padding: 16px;
+  color: black;
+  font-weight: bold;
+  font-size: 40px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next-image {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+.prev-image:hover, .next-image:hover {
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* Style tab links */
+.tablink {
+  background-color: #fff;
+  color: black;
+  float: left;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 5px;
+  font-size: 17px;
+  font-weight: bold;
+  border: none;
+
+}
+
+.tablink:hover {
+  background-color: #36373A;
+  color: white;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+@media screen and (min-width: 601px) {
+  .tablink {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .tablink {
+    font-size: 12px;
+  }
+}
+
+</style>
+<head>
+    <title>Palette: Image-to-Image Diffusion Models</title>
+    <script src="template.v2.js"></script>
+    <meta property="og:title" content="Palette: Image-to-Image Diffusion Models">
+    <meta property="og:type" content="website">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="utf8">
+    <script>
+        $(window).on( "load", function(){
+        $('.preload').attr('src', function(i,a){
+        $(this).attr('src','')
+            .removeClass('preload')
+            .attr('src', a);
+        });
+      });
+    </script>
+</head>
+
+<body>
+  <div class="n-title">
+
+<figure style="margin-top: 0; grid-column: page;">
+
+<div class="panorama-slideshow">
+  <div class="panorama-slide fade">
+    <!-- <div class="numbertext">1 / 3</div> -->
+    <a href="panoramas/image16.png"><img src="panoramas/image16.png" style="display:block; margin-top: .5%; margin-left: auto; margin-right: auto"></a>
+  </div>
+
+  <div class="panorama-slide fade">
+    <!-- <div class="numbertext">2 / 3</div> -->
+    <a href="panoramas/image13.png"><img src="panoramas/image13.png" style="display:block; margin-top: .5%; margin-left: auto; margin-right: auto"></a>
+  </div>
+
+  <div class="panorama-slide fade">
+    <!-- <div class="numbertext">2 / 3</div> -->
+    <a href="panoramas/image1.png"><img src="panoramas/image1.png" style="display:block; margin-top: .5%; margin-left: auto; margin-right: auto"></a>
+  </div>  
+
+  <div class="panorama-slide fade">
+    <!-- <div class="numbertext">2 / 3</div> -->
+    <a href="panoramas/image3.png"><img src="panoramas/image3.png" style="display:block; margin-top: .5%; margin-left: auto; margin-right: auto"></a>
+  </div>
+
+  <div class="panorama-slide fade">
+    <!-- <div class="numbertext">2 / 3</div> -->
+    <a href="panoramas/image4.png"><img src="panoramas/image4.png" style="display:block; margin-top: .5%; margin-left: auto; margin-right: auto"></a>
+  </div>
+
+  <div class="panorama-slide fade">
+    <!-- <div class="numbertext">2 / 3</div> -->
+    <a href="panoramas/image5.png"><img src="panoramas/image5.png" style="display:block; margin-top: .5%; margin-left: auto; margin-right: auto"></a>
+  </div>
+
+  <div class="panorama-slide fade">
+    <!-- <div class="numbertext">2 / 3</div> -->
+    <a href="panoramas/image6.png"><img src="panoramas/image6.png" style="display:block; margin-top: .5%; margin-left: auto; margin-right: auto"></a>
+  </div>
+  <a class="prev" onclick="plusPanoramaSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusPanoramaSlides(1)">&#10095;</a>
+
+  </div>
+<br>
+
+<figcaption style="margin-top: -0.8%; margin-bottom: 0;">
+  Palette results on panorama generation. The middle 256x256 image is the original image. The model is repeatedly applied to 50% right uncropping and 50% left uncropping (4 times each) to obtain the final 256x1280 image. For more examples <a href="panorama.html"> click here</a>. These examples show that <i>Palette is surprisingly robust</i>, generating realistic and coherent outputs even after 8 repeated applications of uncrop.
+</figcaption>
+</figure>
+
+   <h1>
+    Palette: Image-to-Image Diffusion Models&nbsp;
+   </h1>
+   <p style="text-align: center;">
+    We present Palette, a generalist conditional diffusion model for image-to-image translation. Palette beats strong task-specific GAN based baselines on several image-to-image translation tasks without any task-specific customizations.
+   </p>
+
+  </div>
+
+
+  <div class="n-byline">
+   <div class="byline">
+    <ul class="authors">
+     <li>
+      Anonymous CVPR'22 Submission
+     </li>
+   </ul>
+    <ul class="authors affiliations">
+     <li>
+      Paper ID 11166
+     </li>
+    </ul>
+   </div>
+  </div>
+  <d-article>
+
+
+<figure style="margin-top: -5%; text-align: center"> 
+  <div style="overflow: hidden;"> 
+  <img class="preload" src="infinite/2.gif" style="display:inline-block; width: 24%"> 
+  <img class="preload" src="infinite/3.gif" style="display:inline-block; width: 24%"> 
+  <img class="preload" src="infinite/4.gif" style="display:inline-block; width: 24%"> 
+  <img class="preload" src="infinite/6.gif" style="display:inline-block; width: 24%"> 
+      </div>
+<figcaption style="margin-top: 0; margin-bottom: 0;"> 
+  Palette results on infinite zoom out. The most zoomed-in frame is the original image. We then repeatedly apply Palette for uncropping along all 4 sides to generate infinite zoom out effect. For more examples <a href="zooming.html">click here</a>.
+</figcaption>
+</figure>
+
+  <video autoplay="" loop="" muted="" playsinline="" controls="" style="margin-bottom: 6%;" >
+  <source src="videos/palette_movie.mp4" type="video/mp4">
+  </video>
+
+<p style="margin-bottom: 4%; margin-top: -2%">
+ Many computer vision problems can be formulated as image-to-image translation. Examples include restoration tasks like <a href="https://en.wikipedia.org/wiki/Super-resolution_imaging"> super-resolution</a>, <a href="https://www.reddit.com/r/Colorization/">colorization</a>, and <a href="https://en.wikipedia.org/wiki/Inpainting"> inpainting </a>. The difficulty in these problems arises because for a single input image, we can have multiple plausible output images e.g. for colorization, given a black-and-white image, there can be several possible colorized versions of it. 
+</p>
+<p style="margin-bottom: 4%; margin-top: -2%">
+ A natural approach to image-to-image translation is to learn the conditional distribution of output images given the input, using deep <a href="https://en.wikipedia.org/wiki/Generative_model"> generative models</a>. Generative Adversarial Networks (GANs) 
+ <d-cite key="goodfellow2014generative, radford2015unsupervised"></d-cite> 
+ have emerged as the model family of choice for many image-to-image translation tasks 
+ <d-cite key="isola-cvpr-2017"></d-cite>,
+  as they are capable of generating high fidelity outputs, are broadly applicable, and support efficient sampling. Nevertheless, GANs can be challenging to train <d-cite key="arjovsky-arxiv-2017, gulrajani2017improved"></d-cite>, and often drop modes in the output distribution <d-cite key="metz2016unrolled, ravuri2019classification"></d-cite>. Autoregressive Models <d-cite key="oord2016conditional, parmar2018image"></d-cite>, VAEs <d-cite key="Kingma2013, vahdat2021nvae"></d-cite>, and Normalizing Flows <d-cite key="dinh2016density, Kingma2018"></d-cite> have also seen success in specific applications, but arguably, have not established the same level of sample quality and generality as GANs. 
+</p>
+
+
+<p style="margin-bottom: 4%; margin-top: -2%">
+ <a href="https://lilianweng.github.io/lil-log/2021/07/11/diffusion-models.html"> Diffusion</a> and <a href="https://yang-song.github.io/blog/2021/score/"> score-based models</a> <d-cite key="sohl2015deep, song-arxiv-2020, ho2020denoising"></d-cite> have received a surge of recent interest <d-cite key="cai-eccv-2020, song-iclr-2021, hoogeboom2021argmax, vahdat2021score, kingma2021variational, austin2021structured"></d-cite>, resulting in several key advances in modeling continuous data. These models learn to reverse a sequential corruption process that iteratively adds small amounts of gaussian noise to data eventually converting it to random noise. Data generation in these models involves a sequence of refinement steps that gradually denoise random noise to produce samples from data distribution. While diffusion models have achieved great recent success in conditional generation tasks such as speech synthesis <d-cite key="chen-iclr-2021,chen-interspeech-2021,kong-arxiv-2020"></d-cite>, class-conditional ImageNet generation <d-cite key="dhariwal2021diffusion,ho-arxiv-2021"></d-cite>, image super-resolution <d-cite key="saharia-arxiv-2021"></d-cite> and many more, they have not been applied to a broader family of tasks, and it is not clear whether they can rival GANs in offering a versatile and general solution to the problem of image-to-image translation.
+</p>
+
+<p style="margin-bottom: 4%; margin-top: -2%">
+We introduce Palette, a simple and general framework for image-to-image translation using conditional diffusion models. We apply Palette on four challenging and diverse image-to-image translation tasks - <i> image colorization, inpainting, uncropping</i> and <i>JPEG artifact removal </i>. Palette achieves state of the art results in colorization while beating many strong prior task-specific GAN and Regression based methods on other tasks. Importantly, this is achieved without any task-specific customizations demonstrating a desirable degree of generality and flexibility. Furthermore, we show that a single generalist Palette model trained on multiple tasks simultaneously, performs as well or better than Palette models trained on individual tasks. 
+</p>
+
+
+<div style="overflow: hidden; margin-bottom: -2%; text-align: center"> 
+<button class="tablink" onclick="openTask('Colorization', this)" id="defaultOpen" style="display:inline-block; width: 25%">Colorization</button>  
+<button class="tablink" onclick="openTask('Inpainting', this)" style="display:inline-block; width: 25%">Inpainting</button>
+<button class="tablink" onclick="openTask('Uncropping', this)" style="display:inline-block; width: 25%">Uncropping</button>
+<button class="tablink" onclick="openTask('JPEG-Restoration', this)" style="display:inline-block; width: 25%">JPEG Restoration</button>
+</div>
+
+<!-- ################################################################################################################### -->
+<!-- Colorization Images. -->
+
+<div id="Colorization" class="tabcontent panorama-slideshow">
+<div class="image-gallery-slide-0 fade">
+<figure style="margin-top: -9%">
+<figcaption style="margin-bottom: 0.5%;">
+Given a grayscale (or black-and-white) image, Palette generates a colorized version of it. Use left-right arrows to browse through samples. </figcaption>
+  <div style="overflow: hidden;"> <img src="colorization/17.jpg" style="display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="colorization/3.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="colorization/5.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="colorization/0.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="colorization/1.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="colorization/2.jpg" style="margin-top: -2.5%; display:block;"> </div>
+</figure>
+</div>
+
+<div class="image-gallery-slide-0 fade">
+<figure style="margin-top: -9%">
+<figcaption style="margin-bottom: 0.5%;">
+Given a grayscale (or black-and-white) image, Palette generates a colorized version of it. Use left-right arrows to browse through samples. </figcaption>
+<div style="overflow: hidden;"> <img src="colorization/4.jpg" style="display:block;"> </div>
+<div style="overflow: hidden;"> <img src="colorization/6.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="colorization/7.jpg" style="display:block; margin-top: -2.5%;"> </div>
+<div style="overflow: hidden;"> <img src="colorization/8.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="colorization/9.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="colorization/10.jpg" style="margin-top: -2.5%; display:block;"> </div>
+</figure>
+</div>
+
+<div class="image-gallery-slide-0 fade">
+<figure style="margin-top: -9%">
+<figcaption style="margin-bottom: 0.5%;">
+Given a grayscale (or black-and-white) image, Palette generates a colorized version of it. Use left-right arrows to browse through samples. </figcaption>
+<div style="overflow: hidden;"> <img src="colorization/11.jpg" style="display:block;"> </div>
+<div style="overflow: hidden;"> <img src="colorization/12.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="colorization/13.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="colorization/14.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="colorization/15.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="colorization/16.jpg" style="margin-top: -2.5%; display:block;"> </div>
+</figure>
+</div>
+
+<div class="image-gallery-slide-0 fade">
+<figure style="margin-top: -9%">
+<figcaption style="margin-bottom: 0.5%;">
+Given a grayscale (or black-and-white) image, Palette generates a colorized version of it. Use left-right arrows to browse through samples. </figcaption>
+<div style="overflow: hidden;"> <img src="colorization/18.jpg" style="display:block;"> </div>
+<div style="overflow: hidden;"> <img src="colorization/19.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="colorization/20.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="colorization/22.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="colorization/23.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="colorization/21.jpg" style="margin-top: -2.5%; display:block;"> </div>
+</figure>
+</div>
+<a class="prev-image" onclick="plusImageSlides(-1, 0)">&#10094;</a>
+<a class="next-image" onclick="plusImageSlides(1, 0)">&#10095;</a>
+</div>
+
+<!-- ################################################################################################################### -->
+<!-- Inpainting -->
+
+<div id="Inpainting" class="tabcontent panorama-slideshow">
+<div class="image-gallery-slide-1 fade">
+<figure style="margin-top: -9%">
+<figcaption style="margin-bottom: 0.5%;">
+Given an image and arbitrary user-specified mask regions, Palette fills these masked regions with plausible details. Use left-right arrows to browse through samples. </figcaption>
+  <div style="overflow: hidden;"> <img src="inpainting/18.jpg" style="display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="inpainting/19.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="inpainting/12.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="inpainting/0.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="inpainting/1.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="inpainting/3.jpg" style="margin-top: -2.5%; display:block;"> </div>
+</figure>
+</div>
+
+<div class="image-gallery-slide-1 fade">
+<figure style="margin-top: -9%">
+<figcaption style="margin-bottom: 0.5%;">
+Given an image and arbitrary user-specified mask regions, Palette fills these masked regions with plausible details. Use left-right arrows to browse through samples. </figcaption>
+<div style="overflow: hidden;"> <img src="inpainting/4.jpg" style="display:block;"> </div>
+<div style="overflow: hidden;"> <img src="inpainting/5.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="inpainting/6.jpg" style="display:block; margin-top: -2.5%;"> </div>
+<div style="overflow: hidden;"> <img src="inpainting/7.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="inpainting/8.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="inpainting/9.jpg" style="margin-top: -2.5%; display:block;"> </div>
+</figure>
+</div>
+
+<div class="image-gallery-slide-1 fade">
+<figure style="margin-top: -9%">
+<figcaption style="margin-bottom: 0.5%;">
+Given an image and arbitrary user-specified mask regions, Palette fills these masked regions with plausible details. Use left-right arrows to browse through samples. </figcaption>
+<div style="overflow: hidden;"> <img src="inpainting/10.jpg" style="display:block;"> </div>
+<div style="overflow: hidden;"> <img src="inpainting/11.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="inpainting/13.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="inpainting/14.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="inpainting/15.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="inpainting/16.jpg" style="margin-top: -2.5%; display:block;"> </div>
+</figure>
+</div>
+
+<div class="image-gallery-slide-1 fade">
+<figure style="margin-top: -9%">
+<figcaption style="margin-bottom: 0.5%;">
+Given an image and arbitrary user-specified mask regions, Palette fills these masked regions with plausible details. Use left-right arrows to browse through samples. </figcaption>
+<div style="overflow: hidden;"> <img src="inpainting/17.jpg" style="display:block;"> </div>
+<div style="overflow: hidden;"> <img src="inpainting/20.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="inpainting/21.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="inpainting/22.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="inpainting/23.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<!-- <div style="overflow: hidden;"> <img src="inpainting/18.jpg" style="margin-top: -2.5%; display:block;"> </div> -->
+</figure>
+</div>
+
+<a class="prev-image" onclick="plusImageSlides(-1, 1)">&#10094;</a>
+<a class="next-image" onclick="plusImageSlides(1, 1)">&#10095;</a>
+</div>
+
+
+<!-- ################################################################################################################### -->
+<!-- Uncropping -->
+
+<div id="Uncropping" class="tabcontent panorama-slideshow">
+<div class="image-gallery-slide-2 fade">
+<figure style="margin-top: -9%">
+<figcaption style="margin-bottom: 0.5%;">
+Given an image, Palette extends the image either along right/left/top/bottom or along all four directions. Use left-right arrows to browse through samples. </figcaption>
+  <div style="overflow: hidden;"> <img src="uncrop_top/0.jpg" style="display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_right/0.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_all_four_sides/0.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_top/1.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_right/1.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_all_four_sides/1.jpg" style="margin-top: -2.5%; display:block;"> </div>
+</figure>
+</div>
+
+<div class="image-gallery-slide-2 fade">
+<figure style="margin-top: -9%">
+<figcaption style="margin-bottom: 0.5%;">
+Given an image, Palette extends the image either along right/left/top/bottom or along all four directions. Use left-right arrows to browse through samples. </figcaption>
+  <div style="overflow: hidden;"> <img src="uncrop_top/10.jpg" style="display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_right/10.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_all_four_sides/10.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_top/11.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_right/11.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_all_four_sides/11.jpg" style="margin-top: -2.5%; display:block;"> </div>
+</figure>
+</div>
+
+<div class="image-gallery-slide-2 fade">
+<figure style="margin-top: -9%">
+<figcaption style="margin-bottom: 0.5%;">
+Given an image, Palette extends the image either along right/left/top/bottom or along all four directions. Use left-right arrows to browse through samples. </figcaption>
+  <div style="overflow: hidden;"> <img src="uncrop_top/2.jpg" style="display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_right/2.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_all_four_sides/2.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_top/3.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_right/3.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_all_four_sides/3.jpg" style="margin-top: -2.5%; display:block;"> </div>
+</figure>
+</div>
+
+<div class="image-gallery-slide-2 fade">
+<figure style="margin-top: -9%">
+<figcaption style="margin-bottom: 0.5%;">
+Given an image, Palette extends the image either along right/left/top/bottom or along all four directions. Use left-right arrows to browse through samples. </figcaption>
+  <div style="overflow: hidden;"> <img src="uncrop_top/4.jpg" style="display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_right/4.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_all_four_sides/4.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_top/5.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_right/5.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_all_four_sides/5.jpg" style="margin-top: -2.5%; display:block;"> </div>
+</figure>
+</div>
+
+<div class="image-gallery-slide-2 fade">
+<figure style="margin-top: -9%">
+<figcaption style="margin-bottom: 0.5%;">
+Given an image, Palette extends the image either along right/left/top/bottom or along all four directions. Use left-right arrows to browse through samples. </figcaption>
+  <div style="overflow: hidden;"> <img src="uncrop_top/6.jpg" style="display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_right/6.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_all_four_sides/6.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_top/7.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_right/7.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_all_four_sides/7.jpg" style="margin-top: -2.5%; display:block;"> </div>
+</figure>
+</div>
+
+<div class="image-gallery-slide-2 fade">
+<figure style="margin-top: -9%">
+<figcaption style="margin-bottom: 0.5%;">
+Given an image, Palette extends the image either along right/left/top/bottom or along all four directions. Use left-right arrows to browse through samples. </figcaption>
+  <div style="overflow: hidden;"> <img src="uncrop_top/8.jpg" style="display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_right/8.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_all_four_sides/8.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_top/9.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_right/9.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="uncrop_all_four_sides/9.jpg" style="margin-top: -2.5%; display:block;"> </div>
+</figure>
+</div>
+
+<a class="prev-image" onclick="plusImageSlides(-1, 2)">&#10094;</a>
+<a class="next-image" onclick="plusImageSlides(1, 2)">&#10095;</a>
+</div>
+
+
+<!-- ################################################################################################################### -->
+<!-- JPEG Restoration -->
+
+<div id="JPEG-Restoration" class="tabcontent panorama-slideshow">
+<div class="image-gallery-slide-3 fade">
+<figure style="margin-top: -9%">
+<figcaption style="margin-bottom: 0.5%;">
+Given an image compressed using JPEG, Palette removes the compression artifacts to produce a plausible original image. Use left-right arrows to browse through samples. </figcaption>
+  <div style="overflow: hidden;"> <img src="jpeg_decompression/0.jpg" style="display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="jpeg_decompression/5.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="jpeg_decompression/8.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="jpeg_decompression/1.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="jpeg_decompression/2.jpg" style="margin-top: -2.5%; display:block;"> </div>
+  <div style="overflow: hidden;"> <img src="jpeg_decompression/3.jpg" style="margin-top: -2.5%; display:block;"> </div>
+</figure>
+</div>
+
+<div class="image-gallery-slide-3 fade">
+<figure style="margin-top: -9%">
+<figcaption style="margin-bottom: 0.5%;">
+Given an image compressed using JPEG, Palette removes the compression artifacts to produce a plausible original image. Use left-right arrows to browse through samples. </figcaption>
+<div style="overflow: hidden;"> <img src="jpeg_decompression/4.jpg" style="display:block;"> </div>
+<div style="overflow: hidden;"> <img src="jpeg_decompression/6.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="jpeg_decompression/7.jpg" style="display:block; margin-top: -2.5%;"> </div>
+<div style="overflow: hidden;"> <img src="jpeg_decompression/9.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="jpeg_decompression/10.jpg" style="margin-top: -2.5%; display:block;"> </div>
+<div style="overflow: hidden;"> <img src="jpeg_decompression/11.jpg" style="margin-top: -2.5%; display:block;"> </div>
+</figure>
+</div>
+
+<a class="prev-image" onclick="plusImageSlides(-1, 3)">&#10094;</a>
+<a class="next-image" onclick="plusImageSlides(1, 3)">&#10095;</a>
+</div>
+
+
+
+</d-article>
+
+<d-appendix>
+      <d-bibliography src="https://raw.githubusercontent.com/iterative-refinement/iterative-refinement.github.io/master/bibliography.bib"></d-bibliography>
+</d-appendix>
+
+<script>
+
+var panoramaSlideIndex = 1;
+const imageSlideIndex = [1, 1, 1, 1];
+
+// Show first page for panorama slide.
+showPanoramaSlides(panoramaSlideIndex);
+
+// Show first page for all image gallery slides.
+for (let i = 0; i < imageSlideIndex.length; i++) {
+  showImageSlides(imageSlideIndex[i], i)
+  }
+
+// Functions for controlling arrows for Panorama slides.
+function plusPanoramaSlides(n) {
+  showPanoramaSlides(panoramaSlideIndex += n);
+}
+
+function showPanoramaSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("panorama-slide");
+  if (n > slides.length) {panoramaSlideIndex = 1}    
+  if (n < 1) {panoramaSlideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  slides[panoramaSlideIndex-1].style.display = "block";  
+}
+
+
+// Functions for controlling arrows for Image gallery slides.
+function plusImageSlides(n, m) {
+  showImageSlides(imageSlideIndex[m] += n, m);
+}
+
+function showImageSlides(n, m) {
+  var i;
+  var slides = document.getElementsByClassName("image-gallery-slide-".concat(m.toString()));
+  if (n > slides.length) {imageSlideIndex[m] = 1}    
+  if (n < 1) {imageSlideIndex[m] = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  slides[imageSlideIndex[m]-1].style.display = "block";
+}
+
+// Function to control the Tab.
+function openTask(taskName, elmnt) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.color = "";
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(taskName).style.display = "block";
+  elmnt.style.color = "white";
+  elmnt.style.backgroundColor = "#36373A";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+  </script>
+
+
+
+</body>
