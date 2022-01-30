@@ -435,7 +435,8 @@ div[class^='image-gallery-slide-'] {
 <br>
 
 <figcaption style="margin-top: -0.8%; margin-bottom: 0;">
-  Palette results on panorama generation. The middle 256x256 image is the original image. The model is repeatedly applied to 50% right uncropping and 50% left uncropping (4 times each) to obtain the final 256x1280 image. For more examples <a href="panorama.html"> click here</a>. These examples show that <i>Palette is surprisingly robust</i>, generating realistic and coherent outputs even after 8 repeated applications of uncrop.
+  Palette results on panorama generation. The middle 256x256 image is the original image. The model is repeatedly applied to 50% right uncropping and 50% left uncropping (4 times each) to obtain the final 256x1280 image. For more 
+  <a href="panorama.html"> click here</a>. These examples show that <i>Palette is surprisingly robust</i>, generating realistic and coherent outputs even after 8 repeated applications of uncrop.
 </figcaption>
 </figure>
 
@@ -447,19 +448,6 @@ div[class^='image-gallery-slide-'] {
    </p>
 
   </div>
-
-
-  <div class="n-byline">
-   <div class="byline">
-    <ul class="authors">
-     <li>
-      Anonymous Submission
-     </li>
-   </ul>
-   </div>
-  </div>
-  <d-article>
-
 
 <figure style="margin-top: -5%; text-align: center"> 
   <div style="overflow: hidden;"> 
@@ -476,27 +464,6 @@ div[class^='image-gallery-slide-'] {
   <video autoplay="" loop="" muted="" playsinline="" controls="" style="margin-bottom: 6%;" >
   <source src="videos/palette_movie.mp4" type="video/mp4">
   </video>
-
-<p style="margin-bottom: 4%; margin-top: -2%">
- Many computer vision problems can be formulated as image-to-image translation. Examples include restoration tasks like <a href="https://en.wikipedia.org/wiki/Super-resolution_imaging"> super-resolution</a>, <a href="https://www.reddit.com/r/Colorization/">colorization</a>, and <a href="https://en.wikipedia.org/wiki/Inpainting"> inpainting </a>. The difficulty in these problems arises because for a single input image, we can have multiple plausible output images e.g. for colorization, given a black-and-white image, there can be several possible colorized versions of it. 
-</p>
-<p style="margin-bottom: 4%; margin-top: -2%">
- A natural approach to image-to-image translation is to learn the conditional distribution of output images given the input, using deep <a href="https://en.wikipedia.org/wiki/Generative_model"> generative models</a>. Generative Adversarial Networks (GANs) 
- <d-cite key="goodfellow2014generative, radford2015unsupervised"></d-cite> 
- have emerged as the model family of choice for many image-to-image translation tasks 
- <d-cite key="isola-cvpr-2017"></d-cite>,
-  as they are capable of generating high fidelity outputs, are broadly applicable, and support efficient sampling. Nevertheless, GANs can be challenging to train <d-cite key="arjovsky-arxiv-2017, gulrajani2017improved"></d-cite>, and often drop modes in the output distribution <d-cite key="metz2016unrolled, ravuri2019classification"></d-cite>. Autoregressive Models <d-cite key="oord2016conditional, parmar2018image"></d-cite>, VAEs <d-cite key="Kingma2013, vahdat2021nvae"></d-cite>, and Normalizing Flows <d-cite key="dinh2016density, Kingma2018"></d-cite> have also seen success in specific applications, but arguably, have not established the same level of sample quality and generality as GANs. 
-</p>
-
-
-<p style="margin-bottom: 4%; margin-top: -2%">
- <a href="https://lilianweng.github.io/lil-log/2021/07/11/diffusion-models.html"> Diffusion</a> and <a href="https://yang-song.github.io/blog/2021/score/"> score-based models</a> <d-cite key="sohl2015deep, song-arxiv-2020, ho2020denoising"></d-cite> have received a surge of recent interest <d-cite key="cai-eccv-2020, song-iclr-2021, hoogeboom2021argmax, vahdat2021score, kingma2021variational, austin2021structured"></d-cite>, resulting in several key advances in modeling continuous data. These models learn to reverse a sequential corruption process that iteratively adds small amounts of gaussian noise to data eventually converting it to random noise. Data generation in these models involves a sequence of refinement steps that gradually denoise random noise to produce samples from data distribution. While diffusion models have achieved great recent success in conditional generation tasks such as speech synthesis <d-cite key="chen-iclr-2021,chen-interspeech-2021,kong-arxiv-2020"></d-cite>, class-conditional ImageNet generation <d-cite key="dhariwal2021diffusion,ho-arxiv-2021"></d-cite>, image super-resolution <d-cite key="saharia-arxiv-2021"></d-cite> and many more, they have not been applied to a broader family of tasks, and it is not clear whether they can rival GANs in offering a versatile and general solution to the problem of image-to-image translation.
-</p>
-
-<p style="margin-bottom: 4%; margin-top: -2%">
-We introduce Palette, a simple and general framework for image-to-image translation using conditional diffusion models. We apply Palette on four challenging and diverse image-to-image translation tasks - <i> image colorization, inpainting, uncropping</i> and <i>JPEG artifact removal </i>. Palette achieves state of the art results in colorization while beating many strong prior task-specific GAN and Regression based methods on other tasks. Importantly, this is achieved without any task-specific customizations demonstrating a desirable degree of generality and flexibility. Furthermore, we show that a single generalist Palette model trained on multiple tasks simultaneously, performs as well or better than Palette models trained on individual tasks. 
-</p>
-
 
 <div style="overflow: hidden; margin-bottom: -2%; text-align: center"> 
 <button class="tablink" onclick="openTask('Colorization', this)" id="defaultOpen" style="display:inline-block; width: 25%">Colorization</button>  
